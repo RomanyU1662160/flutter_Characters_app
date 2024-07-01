@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/screens/home/home.dart';
+import 'package:flutter_rpg/theme.dart';
 
 void main() {
-  runApp(const MaterialApp(home: Sandbox()));
+  runApp(MaterialApp(
+    home: const Home(),
+    theme: primaryTheme,
+  ));
 }
 
 // class MyApp extends StatelessWidget {
@@ -26,8 +30,7 @@ class Sandbox extends StatelessWidget {
           "Scaffold",
           style: TextStyle(color: Colors.amber[200]),
         ),
-        backgroundColor:
-            Theme.of(context).colorScheme.onSecondaryFixed.withOpacity(0.8),
+        // backgroundColor: Theme.of(context).hintColor,
         centerTitle: true,
       ),
       body: const Text("Sandbox"),
