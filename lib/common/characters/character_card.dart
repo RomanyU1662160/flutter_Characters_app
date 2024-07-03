@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/common/characters/character_image.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
+import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/theme.dart';
 
 class CharacterCard extends StatelessWidget {
   const CharacterCard(this.character, {super.key});
 
-  final String character;
+  final Character character;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,21 @@ class CharacterCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              StyledBodyText(character),
+              CharacterImg(
+                  "assets/img/vocations/${character.vocation.image}", true),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      StyledHeading(character.name),
+                      StyledBodyText(character.slogan),
+                    ],
+                  ),
+                ),
+              ),
               IconButton(
                   onPressed: () {},
                   icon: Icon(
