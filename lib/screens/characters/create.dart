@@ -20,18 +20,23 @@ class _CreateState extends State<Create> {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-        child: Column(
-          children: [
-            Center(
-              child: Icon(Icons.code, color: AppColors.primaryAccent),
-            ),
-            const Center(child: StyledTitle("Welcome, new player...")),
-            const Center(
-              child:
-                  StyledBodyText("Create a name & slogan for your character"),
-            ),
-            const NewCharacterForm(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: Icon(Icons.code, color: AppColors.primaryAccent),
+              ),
+              const Center(child: StyledTitle("Welcome, new player...")),
+              const Center(
+                child:
+                    StyledBodyText("Create a name & slogan for your character"),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const NewCharacterForm(),
+            ],
+          ),
         ),
       ),
     );
