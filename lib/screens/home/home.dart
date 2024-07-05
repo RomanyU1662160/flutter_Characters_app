@@ -3,6 +3,8 @@ import 'package:flutter_rpg/common/characters/character_list.dart';
 import 'package:flutter_rpg/common/styled_button.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/screens/characters/create.dart';
+import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -28,9 +30,8 @@ class _HomeState extends State<Home> {
             // add Character button
             StyledButton(
                 child: const StyledTitle("Create New "),
-                handleOnPress: () {
-                  print("button clicked...");
-                })
+                //handleOnPress: () => {context.go("/create")}
+                handleOnPress: () => {Navigator.pushNamed(context, "/create")})
           ],
         ),
       ),

@@ -38,3 +38,16 @@ class StyledTitle extends StatelessWidget {
             textStyle: Theme.of(context).textTheme.titleMedium));
   }
 }
+
+class StyledErrorTitle extends StatelessWidget {
+  const StyledErrorTitle(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text,
+        style: GoogleFonts.kanit(
+            textStyle: Theme.of(context).textTheme.titleSmall));
+  }
+}

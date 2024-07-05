@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/router.dart';
 import 'package:flutter_rpg/screens/characters/create.dart';
 import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/theme.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: const Create(),
+    // routerConfig: appRouter,
+    home: const Home(),
     theme: primaryTheme,
+    routes: <String, WidgetBuilder>{
+      "/create": (BuildContext context) => const Create(),
+    },
   ));
 }
 

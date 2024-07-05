@@ -12,61 +12,74 @@ class AppColors {
 }
 
 ThemeData primaryTheme = ThemeData(
-    // seed color
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+  // seed color
+  colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
 
-    //scaffold color
-    scaffoldBackgroundColor: AppColors.secondaryAccent,
+  //scaffold color
+  scaffoldBackgroundColor: AppColors.secondaryAccent,
 
-    // app bar theme
-    appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.secondaryColor,
-        foregroundColor: AppColors.textColor,
-        surfaceTintColor: Colors.transparent,
-        centerTitle: true,
-        titleTextStyle: TextStyle(
-            fontSize: 25,
-            color: AppColors.primaryColor,
-            fontWeight: FontWeight.bold)),
+  // app bar theme
+  appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.secondaryColor,
+      foregroundColor: AppColors.textColor,
+      surfaceTintColor: Colors.transparent,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+          fontSize: 25,
+          color: AppColors.primaryColor,
+          fontWeight: FontWeight.bold)),
 
-    // Text Theme
-    // copyWith similar to JS object copy and override, copy default flutter theme and override values below
-    textTheme: const TextTheme().copyWith(
-        bodyMedium: TextStyle(
-          color: AppColors.textColor,
-          fontSize: 16,
-          letterSpacing: 1,
-        ),
-        headlineMedium: TextStyle(
-          color: AppColors.textColor,
-          fontSize: 22,
-          letterSpacing: 1,
-          fontWeight: FontWeight.bold,
-        ),
-        titleMedium: TextStyle(
-          color: AppColors.highlightColor,
-          fontSize: 18,
-          letterSpacing: 2,
-          fontWeight: FontWeight.bold,
-        ),
-        titleLarge: TextStyle(
-            color: AppColors.highlightColor, fontSize: 22, letterSpacing: 2)),
+  // Text Theme
+  // copyWith similar to JS object copy and override, copy default flutter theme and override values below
+  textTheme: const TextTheme().copyWith(
+      bodyMedium: TextStyle(
+        color: AppColors.textColor,
+        fontSize: 16,
+        letterSpacing: 1,
+      ),
+      headlineMedium: TextStyle(
+        color: AppColors.textColor,
+        fontSize: 22,
+        letterSpacing: 1,
+        fontWeight: FontWeight.bold,
+      ),
+      titleMedium: TextStyle(
+        color: AppColors.highlightColor,
+        fontSize: 18,
+        letterSpacing: 2,
+        fontWeight: FontWeight.bold,
+      ),
+      titleSmall: TextStyle(
+        color: AppColors.primaryColor,
+        fontSize: 18,
+        letterSpacing: 2,
+        fontWeight: FontWeight.bold,
+      ),
+      titleLarge: TextStyle(
+          color: AppColors.highlightColor, fontSize: 22, letterSpacing: 2)),
 
-    // Card Theme
-    cardTheme: CardTheme(
-        color: AppColors.secondaryAccent.withOpacity(0.5),
-        surfaceTintColor: Colors.transparent,
-        shape: const RoundedRectangleBorder(),
-        shadowColor: Colors.transparent,
-        margin: const EdgeInsets.only(bottom: 16)),
+  // Card Theme
+  cardTheme: CardTheme(
+      color: AppColors.secondaryAccent.withOpacity(0.5),
+      surfaceTintColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(),
+      shadowColor: Colors.transparent,
+      margin: const EdgeInsets.only(bottom: 16)),
 
-    // inputs theme
-    inputDecorationTheme: InputDecorationTheme(
-      activeIndicatorBorder: BorderSide(color: AppColors.textColor, width: 0.8),
-      border: InputBorder.none,
-      filled: true,
-      fillColor: AppColors.secondaryColor.withOpacity(0.5),
-      labelStyle: TextStyle(color: AppColors.textColor),
-      prefixIconColor: AppColors.highlightColor,
-      //
-    ));
+  // inputs theme
+  inputDecorationTheme: InputDecorationTheme(
+    activeIndicatorBorder: BorderSide(color: AppColors.textColor, width: 0.8),
+    border: InputBorder.none,
+    filled: true,
+    fillColor: AppColors.secondaryColor.withOpacity(0.5),
+    labelStyle: TextStyle(color: AppColors.textColor),
+    prefixIconColor: AppColors.highlightColor,
+    //
+  ),
+
+  dialogTheme: DialogTheme(
+    backgroundColor: AppColors.secondaryAccent,
+    surfaceTintColor: Colors.transparent,
+    iconColor: AppColors.primaryAccent,
+  ),
+);
