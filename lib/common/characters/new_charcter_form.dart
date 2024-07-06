@@ -6,7 +6,6 @@ import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/theme.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 
@@ -33,7 +32,7 @@ class _NewCharacterFormState extends State<NewCharacterForm> {
 
   /// add new character
   void handleCreateNewCharacter() {
-    var uuid = Uuid();
+    var uuid = const Uuid();
     var newCharacter = Character(
         id: uuid.v4(),
         name: _nameController.text.trim(),
@@ -163,7 +162,8 @@ class _NewCharacterFormState extends State<NewCharacterForm> {
           height: 50,
         ),
         StyledButton(
-            child: const StyledTitle("Submit"), handleOnPress: handleSubmit)
+            handleOnPress: handleSubmit,
+            child: const StyledTitle("Submit"))
       ],
     );
   }

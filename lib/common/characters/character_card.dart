@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/common/characters/character_image.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/screens/profile/profile.dart';
 import 'package:flutter_rpg/theme.dart';
 
 class CharacterCard extends StatelessWidget {
@@ -38,11 +39,19 @@ class CharacterCard extends StatelessWidget {
               ),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
-                    Icons.open_in_new,
-                    color: AppColors.primaryAccent,
-                    semanticLabel:
-                        "view character details", // accessibility mode text
+                  icon: GestureDetector(
+                    onTap: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) => Profile(character: character)))
+                    },
+                    child: Icon(
+                      Icons.open_in_new,
+                      color: AppColors.primaryAccent,
+                      semanticLabel:
+                          "view character details", // accessibility mode text
+                    ),
                   ))
             ],
           ),

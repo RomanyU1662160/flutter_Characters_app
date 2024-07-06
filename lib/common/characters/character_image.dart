@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg/theme.dart';
 
 class CharacterImg extends StatelessWidget {
   const CharacterImg(this.src, this.isBlendMood, {super.key});

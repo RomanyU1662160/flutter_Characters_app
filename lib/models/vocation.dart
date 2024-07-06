@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 // enhanced enum is an enum of objects
 enum Vocation {

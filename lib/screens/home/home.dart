@@ -4,7 +4,6 @@ import 'package:flutter_rpg/common/styled_button.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/screens/characters/create.dart';
-import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -31,7 +30,10 @@ class _HomeState extends State<Home> {
             StyledButton(
                 child: const StyledTitle("Create New "),
                 //handleOnPress: () => {context.go("/create")}
-                handleOnPress: () => {Navigator.pushNamed(context, "/create")})
+                handleOnPress: () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (ctx) => const Create()))
+                    })
           ],
         ),
       ),

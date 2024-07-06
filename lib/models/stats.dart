@@ -1,4 +1,4 @@
-import 'package:flutter_rpg/models/character.dart';
+import 'dart:developer';
 
 mixin Stats {
   // fields
@@ -19,39 +19,35 @@ mixin Stats {
       };
 
   List<Map<String, String>> get formattedStatList => [
-        {"title": "Health", "value": _health.toString()},
-        {"title": "Attack", "value": _attack.toString()},
-        {"title": "Defense", "value": _defense.toString()},
-        {"title": "Skill", "value": _skill.toString()},
+        {"title": "health", "value": _health.toString()},
+        {"title": "attack", "value": _attack.toString()},
+        {"title": "defense", "value": _defense.toString()},
+        {"title": "skill", "value": _skill.toString()},
       ];
 
 // methods
   void increaseStat(String stat) {
     if (_points > 0) {
+      log("increase called");
       if (stat == "health") {
         _health++;
-        _points--;
       }
-      ;
       if (stat == "attack") {
         _attack++;
-        _points--;
       }
-      ;
       if (stat == "defense") {
         _defense++;
-        _points--;
       }
-      ;
       if (stat == "skill") {
         _skill++;
-        _points--;
       }
+      _points--;
     }
   }
 
   void decreaseState(stat) {
     if (stat == "health" && _health > 5) {
+      log("decrease called");
       _health--;
       _points++;
     }
