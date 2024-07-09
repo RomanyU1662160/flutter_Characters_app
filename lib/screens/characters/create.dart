@@ -3,14 +3,14 @@ import 'package:flutter_rpg/common/characters/new_charcter_form.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 
-class Create extends StatefulWidget {
-  const Create({super.key});
+class CreateScreen extends StatefulWidget {
+  const CreateScreen({super.key});
 
   @override
-  State<Create> createState() => _CreateState();
+  State<CreateScreen> createState() => _CreateScreenState();
 }
 
-class _CreateState extends State<Create> {
+class _CreateScreenState extends State<CreateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

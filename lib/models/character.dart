@@ -32,9 +32,6 @@ class Character with Stats {
   }
 }
 
-Character char = Character(
-    id: "1", name: "character1", slogan: "Slogan1", vocation: Vocation.ninja);
-
 // Dummy Data Characters
 
 List<Character> characters = [

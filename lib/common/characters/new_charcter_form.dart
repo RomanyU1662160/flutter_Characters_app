@@ -5,8 +5,11 @@ import 'package:flutter_rpg/common/vocation_card.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/home/home.dart';
+import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:toastification/toastification.dart';
 import 'package:uuid/uuid.dart';
 
 class NewCharacterForm extends StatefulWidget {
@@ -39,7 +42,15 @@ class _NewCharacterFormState extends State<NewCharacterForm> {
         slogan: _sloganController.text.trim(),
         vocation: selectedVocation);
 
-    characters.add(newCharacter);
+// call the function from the changeNotifier store to create the character.
+    context.read<CharacterStore>().addNewCharacter(newCharacter);
+
+    /* 
+    another way to use the provide for creating the character
+    
+    // Provider.of<CharacterStore>(context, listen: false)
+    //     .addNewCharacter(newCharacter);
+     */
   }
 
   // override dispose to clear the controllers from the UI tree after submitting the form
@@ -61,7 +72,9 @@ class _NewCharacterFormState extends State<NewCharacterForm> {
               actions: [
                 StyledButton(
                     child: const StyledBodyText("Dismiss"),
-                    handleOnPress: () => Navigator.pop(context)),
+                    handleOnPress: () => {
+                          Navigator.pop(context),
+                        }),
               ],
               actionsAlignment: MainAxisAlignment.center,
             );
@@ -86,6 +99,26 @@ class _NewCharacterFormState extends State<NewCharacterForm> {
           builder: (ctx) => const Home(),
         ));
 
+    toastification.show(
+      context: context,
+      type: ToastificationType.success,
+      style: ToastificationStyle.fillColored,
+      title: const StyledBodyText("New Character Added..."),
+      autoCloseDuration: const Duration(seconds: 7),
+      icon: const Icon(Icons.check),
+      primaryColor: AppColors.successColor,
+      backgroundColor: AppColors.successColor,
+      foregroundColor: Colors.white,
+      borderRadius: BorderRadius.circular(12),
+      boxShadow: const [
+        BoxShadow(
+          color: Color(0x07000000),
+          blurRadius: 16,
+          offset: Offset(0, 16),
+          spreadRadius: 0,
+        )
+      ],
+    );
     // context.go("/");
   }
 
@@ -162,8 +195,7 @@ class _NewCharacterFormState extends State<NewCharacterForm> {
           height: 50,
         ),
         StyledButton(
-            handleOnPress: handleSubmit,
-            child: const StyledTitle("Submit"))
+            handleOnPress: handleSubmit, child: const StyledTitle("Submit"))
       ],
     );
   }

@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/screens/home/home.dart';
+import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/theme.dart';
+import 'package:provider/provider.dart';
+import 'package:toastification/toastification.dart';
 
 void main() {
-  runApp(MaterialApp(
-    // routerConfig: appRouter,
-    home: const Home(),
-    theme: primaryTheme,
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => CharacterStore(),
+      )
+    ],
+    child: ToastificationWrapper(
+        child: MaterialApp(
+      // routerConfig: appRouter,
+      home: const Home(),
+      theme: primaryTheme,
+    )),
   ));
 }
 

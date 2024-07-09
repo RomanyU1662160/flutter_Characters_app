@@ -11,6 +11,6 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
         path: "/create",
         name: "create",
-        builder: (context, state) => const Create()),
+        builder: (context, state) => const CreateScreen()),
   ],
 );
