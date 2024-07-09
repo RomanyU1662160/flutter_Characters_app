@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
@@ -27,5 +29,13 @@ class CharacterStore with ChangeNotifier {
 
   void addNewCharacter(Character character) {
     _characters.add(character);
+    // to update the UI
+    notifyListeners();
+  }
+
+  void removeCharacter(Character character) {
+    log("remove button clicked");
+    _characters.remove(character);
+    notifyListeners();
   }
 }

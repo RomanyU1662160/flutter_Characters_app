@@ -3,7 +3,9 @@ import 'package:flutter_rpg/common/characters/character_image.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/screens/profile/profile.dart';
+import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/theme.dart';
+import 'package:provider/provider.dart';
 
 class CharacterCard extends StatelessWidget {
   const CharacterCard(this.character, {super.key});
@@ -38,21 +40,29 @@ class CharacterCard extends StatelessWidget {
                 ),
               ),
               IconButton(
-                  onPressed: () {},
-                  icon: GestureDetector(
-                    onTap: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (ctx) => Profile(character: character)))
-                    },
-                    child: Icon(
-                      Icons.open_in_new,
-                      color: AppColors.primaryAccent,
-                      semanticLabel:
-                          "view character details", // accessibility mode text
-                    ),
-                  ))
+                onPressed: () {
+                  context.read<CharacterStore>().removeCharacter(character);
+                },
+                icon: const Icon(Icons.delete),
+                color: AppColors.primaryAccent,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: GestureDetector(
+                  onTap: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => Profile(character: character)))
+                  },
+                  child: Icon(
+                    Icons.open_in_new,
+                    color: AppColors.successColor,
+                    semanticLabel:
+                        "view character details", // accessibility mode text
+                  ),
+                ),
+              ),
             ],
           ),
         ),

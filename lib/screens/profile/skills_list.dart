@@ -3,7 +3,6 @@ import 'package:flutter_rpg/common/styled_button.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/skill.dart';
-import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:toastification/toastification.dart';
 
@@ -106,7 +105,7 @@ class _SkillsListState extends State<SkillsList> {
                 context: context,
                 type: ToastificationType.success,
                 style: ToastificationStyle.fillColored,
-                title: StyledBodyText("Saved..."),
+                title: const StyledBodyText("Saved..."),
                 autoCloseDuration: const Duration(seconds: 7),
                 icon: const Icon(Icons.check),
                 primaryColor: AppColors.successColor,
