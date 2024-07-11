@@ -1,11 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/firebase_options.dart';
 import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
-void main() {
+void main() async {
+  /*
+This line is crucial for Flutter applications that need to interact with Firebase 
+(or any other asynchronous operations) before the runApp() function is called.
+  */
+  WidgetsFlutterBinding.ensureInitialized();
+  // initializes the Firebase application
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(

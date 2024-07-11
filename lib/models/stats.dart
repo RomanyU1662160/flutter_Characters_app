@@ -64,6 +64,15 @@ mixin Stats {
       _points++;
     }
   }
+
+  setState({required int points, required Map<String, dynamic> stats}) {
+    _points = points;
+
+    _health = stats["health"];
+    _attack = stats["attack"];
+    _defense = stats["defense"];
+    _skill = stats["skill"];
+  }
 }
 
 // Character char = Character(id: "1", name: "character1", slogan: "Slogan1");
