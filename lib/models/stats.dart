@@ -65,7 +65,7 @@ mixin Stats {
     }
   }
 
-  setState({required int points, required Map<String, dynamic> stats}) {
+  setStats({required int points, required Map<String, dynamic> stats}) {
     _points = points;
 
     _health = stats["health"];

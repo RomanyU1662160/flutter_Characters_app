@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/common/styled_button.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/screens/profile/skills_list.dart';
 import 'package:flutter_rpg/screens/profile/stats_table.dart';
+import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/theme.dart';
+import 'package:provider/provider.dart';
+import 'package:toastification/toastification.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key, required this.character});
@@ -102,6 +106,37 @@ class Profile extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: SkillsList(character),
             ),
+            // const SizedBox(
+            //   height: 30,
+            // ),
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: StyledButton(
+                  child: const StyledBodyText("Save"),
+                  handleOnPress: () {
+                    context.read<CharacterStore>().updateCharacter(character);
+                    toastification.show(
+                      context: context,
+                      type: ToastificationType.success,
+                      style: ToastificationStyle.fillColored,
+                      title: const StyledBodyText("Saved..."),
+                      autoCloseDuration: const Duration(seconds: 7),
+                      icon: const Icon(Icons.check),
+                      primaryColor: AppColors.successColor,
+                      backgroundColor: AppColors.successColor,
+                      foregroundColor: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x07000000),
+                          blurRadius: 16,
+                          offset: Offset(0, 16),
+                          spreadRadius: 0,
+                        )
+                      ],
+                    );
+                  }),
+            )
           ],
         ),
       ),

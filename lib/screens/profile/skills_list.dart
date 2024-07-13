@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg/common/styled_button.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/skill.dart';
 import 'package:flutter_rpg/theme.dart';
-import 'package:toastification/toastification.dart';
 
 class SkillsList extends StatefulWidget {
   const SkillsList(this.character, {super.key});
@@ -88,42 +86,12 @@ class _SkillsListState extends State<SkillsList> {
                 onTap: () {
                   setState(() {
                     selectedSkill = skill;
+                    widget.character.updateSkills(selectedSkill);
                   });
                 },
               ),
             );
           }).toList(),
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        StyledButton(
-            child: const StyledBodyText("Save"),
-            handleOnPress: () {
-              widget.character.updateSkills(selectedSkill);
-              toastification.show(
-                context: context,
-                type: ToastificationType.success,
-                style: ToastificationStyle.fillColored,
-                title: const StyledBodyText("Saved..."),
-                autoCloseDuration: const Duration(seconds: 7),
-                icon: const Icon(Icons.check),
-                primaryColor: AppColors.successColor,
-                backgroundColor: AppColors.successColor,
-                foregroundColor: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color(0x07000000),
-                    blurRadius: 16,
-                    offset: Offset(0, 16),
-                    spreadRadius: 0,
-                  )
-                ],
-              );
-            }),
-        const SizedBox(
-          height: 30,
         ),
       ],
     );

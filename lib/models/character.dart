@@ -38,7 +38,7 @@ class Character with Stats {
       "name": name,
       "slogan": slogan,
       "vocation": vocation.toString(),
-      "skills": skills.map((S) => S.id).toList(),
+      "skills": mockSkills.map((S) => S.id).toList(),
       "isFav": _isFav,
       "stats": statsAsMap,
       "points": points,
@@ -69,7 +69,7 @@ class Character with Stats {
     }
 
     // set stats
-    character.setState(points: data['points'], stats: data['stats']);
+    character.setStats(points: data['points'], stats: data['stats']);
     return character;
   }
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rpg/common/characters/character_list.dart';
 import 'package:flutter_rpg/common/styled_button.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
-import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/screens/characters/create.dart';
 import 'package:flutter_rpg/services/character_store.dart';
+import 'package:flutter_rpg/services/firestore_service.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -16,9 +16,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   @override
+  // fetch characters on the first render before the build
+  void initState() {
+    context.read<CharacterStore>().fetchCharactersOnce();
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
 // use the provider to watch and get the characters list
-    List<Character> characters = context.watch<CharacterStore>().characters;
+    FireStoreService.getAllCharacters();
 
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +42,7 @@ class _HomeState extends State<Home> {
             //   return CharactersList(value.characters);
             // }),
 
-            CharactersList(characters),
+            CharactersList(context.watch<CharacterStore>().characters),
             // add Character button
             StyledButton(
                 child: const StyledTitle("Create New "),

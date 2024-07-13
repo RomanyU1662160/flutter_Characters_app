@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/common/styled_text.dart';
 import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/theme.dart';
+import 'package:provider/provider.dart';
 
 class StatsTable extends StatefulWidget {
   const StatsTable(this.character, {super.key});
@@ -81,6 +82,10 @@ class _StatsTableState extends State<StatsTable> {
                         setState(() {
                           widget.character.increaseStat(stat["title"]!);
                         });
+                        // update DB and Global state
+                        context
+                            .read<CharacterStore>()
+                            .updateCharacter(widget.character);
                       },
                     )),
                 TableCell(
@@ -91,9 +96,15 @@ class _StatsTableState extends State<StatsTable> {
                         color: AppColors.primaryAccent,
                       ),
                       onPressed: () {
-                        setState(() {
-                          widget.character.decreaseState(stat["title"]!);
-                        });
+                        setState(
+                          () {
+                            widget.character.decreaseState(stat["title"]!);
+                          },
+                        );
+                        // update DB and Global state
+                        context
+                            .read<CharacterStore>()
+                            .updateCharacter(widget.character);
                       },
                     )),
               ]);
